@@ -16,8 +16,11 @@ $('#dog').on('click',function(event){
 	var queryURL = (url+parameter+search+apiKey);
 
 	$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
+		$('input').empty();
 			console.log(search);
-			console.log(response.response.docs[0]);
+			console.log(response.response.docs[0].web_url);
+			$('#showPosts').append(response.response.docs[0].snippet)
+			$('#showPosts').append("<a href='"+response.response.docs[0].web_url+"'>"+response.response.docs[0].web_url+"</a>");
 
 			return false;
 
