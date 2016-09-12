@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 
-$('#dog').on('click',function(event){
+$('#submit').on('click',function(event){
 	
 	event.preventDefault();
 
@@ -9,14 +9,15 @@ $('#dog').on('click',function(event){
 	var parameter = 'q='
 	var search = $('#searchTerm').val();
 	var apiKey = '&api-key=88534e21c78a49479cadce650a295d43';
-	var begin_date= "2016910";
+	// var begin_date= "2016910";
 
 	console.log("test")
 
 	var queryURL = (url+parameter+search+apiKey);
+	console.log(queryURL)
 
 	$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
-		$('input').empty();
+	
 			console.log(search);
 			console.log(response.response.docs[0].web_url);
 			$('#showPosts').append(response.response.docs[0].snippet)
